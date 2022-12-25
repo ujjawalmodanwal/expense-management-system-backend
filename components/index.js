@@ -7,6 +7,7 @@ const { errorHandler, notFound } = require('../middlewares/errorMiddlewares.js')
 const cardRoutes = require("../Routes/cardRoutes");
 const tableRoutes = require("../Routes/tableRoutes");
 const path= require("path");
+const cors = require('cors');
 
 const app = express();
 dotenv.config();
@@ -15,17 +16,8 @@ app.use(express.json());
 const PORT = process.env.PORT || 5000;
 
 
-const cors = require('cors');
-app.use(cors);
-app.options('*',cors);
-const allowCrossDomain = function(req,res,next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-  res.header('Access-Control-Allow-Credentials', true);
-  next();  
-}
-app.use(allowCrossDomain);
+
+app.use(cors())
 
 app.use("/api/cards", cardRoutes);
 app.use("/api/users", userRoutes);
