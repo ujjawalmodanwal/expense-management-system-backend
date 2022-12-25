@@ -6,8 +6,7 @@ const userRoutes = require('../Routes/userRoutes');
 const { errorHandler, notFound } = require('../middlewares/errorMiddlewares.js');
 const cardRoutes = require("../Routes/cardRoutes");
 const tableRoutes = require("../Routes/tableRoutes");
-const path= require("path")
-const cors = require('cors')
+const path= require("path");
 
 const app = express();
 dotenv.config();
